@@ -10,7 +10,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
 )
 
-//go:embed frontend/dist
+//go:embed frontend/build
 var assets embed.FS
 
 func main() {
@@ -33,10 +33,10 @@ func main() {
 		HideWindowOnClose: false,
 		RGBA:              &options.RGBA{255, 255, 255, 255},
 		Assets:            assets,
-		LogLevel:   logger.DEBUG,
-		OnStartup:  app.startup,
-		OnDomReady: app.domReady,
-		OnShutdown: app.shutdown,
+		LogLevel:          logger.DEBUG,
+		OnStartup:         app.startup,
+		OnDomReady:        app.domReady,
+		OnShutdown:        app.shutdown,
 		Bind: []interface{}{
 			app,
 		},
