@@ -3,6 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"time"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -19,6 +22,14 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	// Perform your setup here
 	a.ctx = ctx
+	go func() {
+		ticker := time.NewTicker(3 * time.Second)
+		cnt := 0
+		for range ticker.C {
+			cnt++
+			runtime.EventsEmit(ctx, "count", cnt)
+		}
+	}()
 }
 
 // domReady is called after the front-end dom has been loaded
