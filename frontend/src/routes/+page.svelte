@@ -1,5 +1,5 @@
 <script>
-  import { Greet } from "../lib/wailsjs/go/main/App.js";
+  import { Greet } from "$lib/wailsjs/go/main/App.js";
   import { browser } from "$app/environment";
   let Name = "No Name";
   let Response = "";
